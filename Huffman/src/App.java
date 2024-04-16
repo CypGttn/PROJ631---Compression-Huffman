@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class App {
     public static void main(String[] args) {
@@ -6,6 +7,7 @@ public class App {
         ArrayList<String> avecDoublons = Frequence.FrequenceCaractere(fic);
         ArrayList<String> sansDoublons = Frequence.Doublons(avecDoublons);
         ArrayList<Integer> frequenceLettre = Frequence.Count(avecDoublons, sansDoublons) ;
-        System.out.println(Frequence.Dictionnaire(sansDoublons, frequenceLettre));
+        LinkedHashMap<String, Integer> dico = Frequence.Dictionnaire(sansDoublons, frequenceLettre);
+        System.out.println(Frequence.TrierDico(dico));
     }
 }

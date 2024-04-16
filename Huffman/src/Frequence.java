@@ -1,13 +1,24 @@
-import java.io.File;
-import java.util.ArrayList; 
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.Map.*;
 
 public class Frequence {
     private String mot;
     private ArrayList<String> decompoMot; 
     private ArrayList<String> enleverDoublons; 
     private ArrayList<Integer> frequenceLettre; 
+
+    public Frequence(String mot, ArrayList<String> decompoMot, ArrayList<String> enleverDoublons,
+            ArrayList<Integer> frequenceLettre) {
+        this.mot = mot;
+        this.decompoMot = decompoMot;
+        this.enleverDoublons = enleverDoublons;
+        this.frequenceLettre = frequenceLettre;
+    }
 
     public static ArrayList<String> FrequenceCaractere(String mot){
         ArrayList<String> decompoMot = new ArrayList<String>();
@@ -60,5 +71,39 @@ public class Frequence {
         return dico;
     }
 
-        
+    public static LinkedHashMap<String, Integer> TrierDico(LinkedHashMap<String, Integer> dico){
+        // using entryset() method
+        List<Map.Entry<String, Integer> > list
+            = new ArrayList<Map.Entry<String, Integer> >(
+                dico.entrySet());
+  
+        // Comparable Interface function to
+        // sort the values of List
+        Collections.sort(
+            list,
+            new Comparator<Map.Entry<String, Integer> >() {
+                // Comparing entries
+                public int compare(
+                    Entry<String, Integer> entry1,
+                    Entry<String, Integer> entry2)
+                {
+                    return entry1.getValue()
+                        - entry2.getValue();
+                }
+            });
+  
+        // Clear the above LinkedHashMap
+        // using clear() method
+        dico.clear();
+  
+        // Iterating over elements using for each loop
+        for (Map.Entry<String, Integer> entry : list) {
+  
+            // Put all sorted value back to the
+            // LinkedHashMap
+            dico.put(entry.getKey(), entry.getValue());
+        }
+        return dico;
+  
+    }
 }
