@@ -1,14 +1,13 @@
 import java.io.File;
 import java.util.ArrayList; 
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Frequence {
     private String mot;
     private ArrayList<String> decompoMot; 
     private ArrayList<String> enleverDoublons; 
     private ArrayList<Integer> frequenceLettre; 
-
-
-
 
     public static ArrayList<String> FrequenceCaractere(String mot){
         ArrayList<String> decompoMot = new ArrayList<String>();
@@ -47,4 +46,19 @@ public class Frequence {
         }   
         return frequenceLettre;
     }
+
+    public static LinkedHashMap<String, Integer> Dictionnaire(ArrayList<String> enleverDoublons, ArrayList<Integer> frequenceLettre){
+        // Création d'un LinkedHashMap avec des chaînes de caractères comme clés et des entiers comme valeurs
+        LinkedHashMap<String, Integer> dico = new LinkedHashMap<>();
+
+        for (int i=0; i < enleverDoublons.size();i++){
+            String element = enleverDoublons.get(i);
+            Integer valeur = frequenceLettre.get(i); 
+            dico.put(element, valeur); 
+        }
+
+        return dico;
+    }
+
+        
 }

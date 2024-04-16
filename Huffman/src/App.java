@@ -5,6 +5,7 @@ public class App {
         String fic = LectureFichier.LireFichier("C:\\Users\\Guitton Cyprien\\Downloads\\PROJ631 -Algo\\PROJ631---Compression-Huffman\\textesimple.txt");
         ArrayList<String> avecDoublons = Frequence.FrequenceCaractere(fic);
         ArrayList<String> sansDoublons = Frequence.Doublons(avecDoublons);
-        System.out.println(Frequence.Count(avecDoublons, sansDoublons));
+        ArrayList<Integer> frequenceLettre = Frequence.Count(avecDoublons, sansDoublons) ;
+        System.out.println(Frequence.Dictionnaire(sansDoublons, frequenceLettre));
     }
 }
