@@ -46,12 +46,14 @@ public class ConstructionArbre {
             }
 
         }
-        
-
     }
 
-    public void AfficherArbre() {
-        
+    public void afficherArbre() {
+        if (arbre.size() == 1) {
+            arbre.get(0).afficher(); // Appel de la méthode afficher de la classe Arbre
+        } else {
+            System.out.println("L'arbre n'est pas encore construit.");
+        }
     }
 
 }

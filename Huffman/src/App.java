@@ -13,7 +13,7 @@ public class App {
         ConstructionArbre tree = new ConstructionArbre(dicoTrier);
         tree.CreerBranche(); 
         tree.Noeud();
-        System.out.println(tree);
+        tree.afficherArbre(); 
 
     }
 }
