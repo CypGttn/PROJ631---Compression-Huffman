@@ -96,7 +96,7 @@ public class Arbre {
 
         
         if (arbre.caractere != null) {
-            System.out.println(code);
+            System.out.println(arbre.caractere + " : " + code);
         } 
 
         codage(arbre.enfantDroit, niveau + 1, code +"1");
