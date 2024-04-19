@@ -4,7 +4,7 @@ public class Arbre {
     public Arbre enfantDroit;
     public Arbre enfantGauche;
 
-    public Arbre(String caractere, int valeur, Arbre enfantDroit, Arbre enfantGauche) {
+    public Arbre(String caractere, int valeur, Arbre enfantGauche, Arbre enfantDroit) {
         this.caractere = caractere;
         this.valeur = valeur;
         this.enfantDroit = enfantDroit;
@@ -14,6 +14,12 @@ public class Arbre {
     public Arbre(String caractere, int valeur) {
         this.caractere = caractere;
         this.valeur = valeur;
+    }
+
+    public Arbre(int valeur,Arbre enfantGauche, Arbre enfantDroit) {
+        this.valeur = valeur;
+        this.enfantDroit = enfantDroit;
+        this.enfantGauche = enfantGauche;
     }
 
     
