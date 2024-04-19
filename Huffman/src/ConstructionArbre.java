@@ -50,4 +50,8 @@ public class ConstructionArbre {
 
     }
 
+    public void AfficherArbre() {
+        
+    }
+
 }
