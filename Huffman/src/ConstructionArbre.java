@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -6,47 +7,46 @@ public class ConstructionArbre {
     public ArrayList<String> enleverDoublons; 
     public ArrayList<Integer> frequenceLettre;
     public LinkedHashMap<String, Integer> dico;
+    public ArrayList<Arbre> arbre;
 
     public ConstructionArbre(LinkedHashMap<String, Integer> dico) {
         this.dico = dico;
+        this.arbre = new  ArrayList<Arbre>(); 
     }
 
-    public  ArrayList<Arbre> CreerBranche() {
-        ArrayList<Arbre> feuilles = new ArrayList<Arbre>(); 
+    public  ArrayList<Arbre> CreerBranche() { 
 
         for (Map.Entry<String, Integer> entry : dico.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            feuilles.add(new Arbre(key, value));
+            arbre.add(new Arbre(key, value));
         }
-        return feuilles; 
+        return arbre; 
     }
 
-    public ArrayList<Arbre> Noeud(){
-        ArrayList<Arbre> arbre = CreerBranche();
+    public void Noeud(){
         for (Arbre feuille : arbre ) {
             if (arbre.size() == 1) {
-                return arbre;
+                System.out.println("Arbre construit");
             }
             else {
-                
+
                 Arbre feuille1 = arbre.get(0);
                 Arbre feuille2 = arbre.get(1);
 
                 int somme = feuille1.valeur + feuille2.valeur; 
 
                 Arbre noeud = new Arbre(somme, feuille1, feuille2); 
-
+                arbre.remove(feuille1);
+                arbre.remove(feuille2); 
                 arbre.add(noeud);
-
-
+                Collections.sort(arbre, new ArbreComparator()); 
+                Noeud(); 
 
             }
 
         }
         
-        
-        Arbre noeudUn = new Arbre(feuille1.valeur+feuille2.valeur, feuille1, feuille2); 
 
     }
 

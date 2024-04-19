@@ -11,7 +11,9 @@ public class App {
         LinkedHashMap<String, Integer> dicoTrier = Frequence.TrierDico(dico);
 
         ConstructionArbre tree = new ConstructionArbre(dicoTrier);
-        System.out.println(tree.CreerBranche()); 
+        tree.CreerBranche(); 
+        tree.Noeud();
+        System.out.println(tree);
 
     }
 }

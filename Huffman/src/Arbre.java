@@ -22,6 +22,38 @@ public class Arbre {
         this.enfantGauche = enfantGauche;
     }
 
+    public String getCaractere() {
+        return caractere;
+    }
+
+    public void setCaractere(String caractere) {
+        this.caractere = caractere;
+    }
+
+    public int getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(int valeur) {
+        this.valeur = valeur;
+    }
+
+    public Arbre getEnfantDroit() {
+        return enfantDroit;
+    }
+
+    public void setEnfantDroit(Arbre enfantDroit) {
+        this.enfantDroit = enfantDroit;
+    }
+
+    public Arbre getEnfantGauche() {
+        return enfantGauche;
+    }
+
+    public void setEnfantGauche(Arbre enfantGauche) {
+        this.enfantGauche = enfantGauche;
+    }
+
     
 
     
