@@ -82,5 +82,25 @@ public class Arbre {
         afficherArbre(arbre.enfantDroit, niveau + 1);
     }
 
+    public void codageHuffman() {
+        codage(this, 0, "");
+    }
+
+    private void codage(Arbre arbre, int niveau, String code) {
+        if (arbre == null) {
+            return;
+        }
+
+        // Afficher l'arbre de manière récursive
+        codage(arbre.enfantGauche, niveau + 1, code + "0");
+
+        
+        if (arbre.caractere != null) {
+            System.out.println(code);
+        } 
+
+        codage(arbre.enfantDroit, niveau + 1, code +"1");
+    }
+
 }
 

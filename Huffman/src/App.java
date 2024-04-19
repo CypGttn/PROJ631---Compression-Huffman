@@ -14,6 +14,7 @@ public class App {
         tree.CreerBranche(); 
         tree.Noeud();
         tree.afficherArbre(); 
+        tree.AfficherCode();
 
     }
 }

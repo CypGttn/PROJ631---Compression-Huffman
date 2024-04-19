@@ -56,4 +56,12 @@ public class ConstructionArbre {
         }
     }
 
+    public void AfficherCode() {
+        if (arbre.size() == 1) {
+            arbre.get(0).codageHuffman();
+        } else {
+            System.out.println("L'arbre n'est pas encore construit.");
+        }   
+    }
+
 }
