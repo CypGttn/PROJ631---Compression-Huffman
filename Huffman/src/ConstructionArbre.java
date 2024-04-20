@@ -1,3 +1,4 @@
+//Import des modules java
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -56,12 +57,21 @@ public class ConstructionArbre {
         }
     }
 
-    public void AfficherCode() {
+    public String AfficherCode() {
+        LinkedHashMap<String, String> codage = new LinkedHashMap<String, String>();
         if (arbre.size() == 1) {
-            arbre.get(0).codageHuffman();
+            codage = arbre.get(0).codageHuffman();
         } else {
             System.out.println("L'arbre n'est pas encore construit.");
         }   
+
+
+        String codageComplet = ""; 
+        for (Map.Entry<String, String> entry : codage.entrySet()) {
+            codageComplet += entry.getValue(); 
+
+        }
+        return codageComplet; 
     }
 
 

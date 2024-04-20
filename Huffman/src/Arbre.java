@@ -1,9 +1,14 @@
+//Import des modules java
+import java.util.LinkedHashMap;
+
 public class Arbre {
+    //On définit les éléments nécessaires à la création de l'arbre
     public String caractere;
     public int valeur;
     public Arbre enfantDroit;
     public Arbre enfantGauche;
 
+    //On initialise les constructeurs 
     public Arbre(String caractere, int valeur, Arbre enfantGauche, Arbre enfantDroit) {
         this.caractere = caractere;
         this.valeur = valeur;
@@ -25,6 +30,7 @@ public class Arbre {
         this.enfantGauche = enfantGauche;
     }
 
+    //On initialise les getters et setteurs
     public String getCaractere() {
         return caractere;
     }
@@ -57,10 +63,14 @@ public class Arbre {
         this.enfantGauche = enfantGauche;
     }
 
+    //Affichage Arbre
+
+    //Initialise l'affichage de l'arbre par un appel de fonction
     public void afficher() {
         afficherArbre(this, 0);
     }
 
+    //Affiche l'arbre de manière récursive en parcourant les enfants droits et gauches
     private void afficherArbre(Arbre arbre, int niveau) {
         if (arbre == null) {
             return;
@@ -73,33 +83,45 @@ public class Arbre {
             System.out.print("    "); // Indentation pour chaque niveau
         }
 
+        //Si un caractère est associé à la fréquence 
         if (arbre.caractere != null) {
             System.out.println("[" + arbre.caractere + ", " + arbre.valeur + "]");
-        } else {
+        } 
+        //Si aucun caractère n'est associé à la fréquence 
+        else {
             System.out.println("[" + arbre.valeur + "]");
         }
 
         afficherArbre(arbre.enfantDroit, niveau + 1);
     }
+    //Codage Huffman
 
-    public void codageHuffman() {
-        codage(this, 0, "");
+    //Initialise un dicitonnaire et faire le premier appel à la fonction codage
+    public LinkedHashMap<String, String> codageHuffman() {
+        LinkedHashMap<String, String> codageFreq = new LinkedHashMap<>();
+        return codage(this, 0, "", codageFreq);
+        
     }
 
-    private void codage(Arbre arbre, int niveau, String code) {
+    //Codage de chaque caractère de manière récursive
+    private LinkedHashMap<String, String> codage(Arbre arbre, int niveau, String code, LinkedHashMap<String, String> codageFreq) {
+        
         if (arbre == null) {
-            return;
+            return codageFreq;
         }
 
-        // Afficher l'arbre de manière récursive
-        codage(arbre.enfantGauche, niveau + 1, code + "0");
+        // Afficher l'arbre de manière récursive, enfant Gauche ajoute un 1
+        codage(arbre.enfantGauche, niveau + 1, code + "0", codageFreq);
 
         
         if (arbre.caractere != null) {
-            System.out.println(arbre.caractere + " : " + code);
+            codageFreq.put(arbre.caractere, code);
         } 
+        // Afficher l'arbre de manière récursive, enfant drpit ajoute un 0
+        codage(arbre.enfantDroit, niveau + 1, code +"1", codageFreq);
 
-        codage(arbre.enfantDroit, niveau + 1, code +"1");
+        //Retourne le dictionnaire associant le caractère à son code en binaire 
+        return codageFreq;
     }
 
 }
