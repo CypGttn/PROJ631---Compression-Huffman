@@ -4,8 +4,11 @@ import java.util.LinkedHashMap;
 
 public class App {
     public static void main(String[] args) {
+        //Chemin du fichier
+        String nomFichier = "extraitalice"; 
+        String filePath = nomFichier + ".txt";
         //
-        String fic = LectureFichier.LireFichier("C:\\Users\\Guitton Cyprien\\Downloads\\PROJ631 -Algo\\PROJ631---Compression-Huffman\\textesimple.txt");
+        String fic = LectureFichier.LireFichier(filePath);
         //Création de la liste avec tous les caractères du texte
         ArrayList<String> avecDoublons = Frequence.FrequenceCaractere(fic);
         //On en enlève les doublons
@@ -26,8 +29,12 @@ public class App {
         tree.afficherArbre(); 
         //On crée le code binaire à partir de l'arbre
         tree.AfficherCode();
-        tree.DocBin("textesimple");
+        tree.DocBin(nomFichier);
         System.out.println(tree.AfficherCode());
+        // Calculs de compression 
+        Calculs calc = new Calculs(nomFichier); 
+        calc.Compression();
+        
 
     }
 }
