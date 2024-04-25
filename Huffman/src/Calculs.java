@@ -15,8 +15,8 @@ public class Calculs {
         // Vérifier si le fichier existe
         if(file.exists()) {
             // Obtenir la taille du fichier en octets
-            long fileSize = file.length();
-            long texteSize = texte.length(); 
+            double fileSize = file.length();
+            double texteSize = texte.length(); 
 
             return 1 - fileSize/texteSize; 
         
