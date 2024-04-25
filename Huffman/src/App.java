@@ -26,6 +26,7 @@ public class App {
         tree.afficherArbre(); 
         //On crée le code binaire à partir de l'arbre
         tree.AfficherCode();
+        tree.DocBin("textesimple");
         System.out.println(tree.AfficherCode());
 
     }

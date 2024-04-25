@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ConstructionArbre {
     //On définit les listes et dictionnaires nécessaires pour avoir les éléments pour créer l'arbre
@@ -81,6 +84,31 @@ public class ConstructionArbre {
         }
         return codageComplet; 
     }
+
+    public void DocBin(String nom_fichier) {
+        String codageString = AfficherCode(); 
+        String fileName = nom_fichier +"_comp.bin";
+
+        try {
+            // Créer un flux de sortie vers le fichier binaire
+            FileOutputStream fos = new FileOutputStream(fileName);
+            // Créer un flux de données pour écrire des données binaires
+            DataOutputStream dos = new DataOutputStream(fos);
+
+            // Écrire des données dans le fichier binaire
+            dos.writeUTF(codageString);
+
+            // Fermer les flux
+            dos.close();
+            fos.close();
+
+            System.out.println("Le fichier binaire a été créé avec succès.");
+        } catch (IOException e) {
+            System.out.println("Une erreur s'est produite : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
