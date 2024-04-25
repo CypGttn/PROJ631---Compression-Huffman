@@ -34,6 +34,7 @@ public class App {
         // Calculs de compression 
         Calculs calc = new Calculs(nomFichier); 
         calc.Compression();
+        System.out.println(calc.Compression());
         
 
     }
