@@ -15,10 +15,12 @@ public class App {
         ArrayList<String> sansDoublons = Frequence.Doublons(avecDoublons);
         //En utilisant la liste et la liste sans les doublons, on compte les occurences de chaque caractere
         ArrayList<Integer> frequenceLettre = Frequence.Count(avecDoublons, sansDoublons) ;
-        //On crée un dictionnaire associant le caractère et sa fréquece
+        //On crée un dictionnaire associant le caractère et sa fréquence
         LinkedHashMap<String, Integer> dico = Frequence.Dictionnaire(sansDoublons, frequenceLettre);
         //On trie le dictionnaire par fréquence de caractère croissante
         LinkedHashMap<String, Integer> dicoTrier = Frequence.TrierDico(dico);
+        //Création du fichier contenant les fréquences
+        Frequence.FichierFreq(dicoTrier, nomFichier);   
         //En utilisant le dictionnaire trié, on crée notre arbre selon le modèle d'Huffman
         ConstructionArbre tree = new ConstructionArbre(dicoTrier);
         //On crée une liste avec toutes les branches

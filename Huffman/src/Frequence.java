@@ -1,10 +1,9 @@
 //Import des modules java
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map.*;
 
 public class Frequence {
@@ -87,12 +86,16 @@ public class Frequence {
                 public int compare(
                     Entry<String, Integer> entry1,
                     Entry<String, Integer> entry2)
-                {
-                    return entry1.getValue()
-                        - entry2.getValue();
-                }
-            });
-  
+                    {
+                        int compareValue = entry1.getValue().compareTo(entry2.getValue());
+                        if (compareValue != 0) {
+                            return compareValue;
+                        } else {
+                            // If values are equal, compare by ASCII codes of keys
+                            return entry1.getKey().compareTo(entry2.getKey());
+                        }
+                    }
+                });
         // Clear the above LinkedHashMap
         // using clear() method
         dico.clear();
@@ -106,5 +109,44 @@ public class Frequence {
         }
         return dico;
   
+    }
+
+    public static void FichierFreq(LinkedHashMap<String, Integer> dico, String nomFichier) {
+        int somme = 0; 
+
+        // Iterating over elements using for each loop
+        for (Map.Entry<String, Integer> entry : dico.entrySet()) {
+            somme = somme + entry.getValue();
+        }
+        System.out.println("Nombre total de caractère :" + somme );
+        String fileName = nomFichier +"_freq.txt";
+
+        try {
+            // Créer un flux de sortie vers le fichier binaire
+            FileOutputStream fos = new FileOutputStream(fileName);
+            DataOutputStream dos = new DataOutputStream(fos);
+
+            // Écrire des données dans le fichier binaire
+            dos.writeUTF(String.valueOf(somme));
+            for (Map.Entry<String, Integer> entry : dico.entrySet()) {
+                dos.writeUTF("\n" + entry.getKey() + " " + String.valueOf(entry.getValue()));
+            }
+
+            // Fermer les flux
+            dos.close();
+            fos.close();
+            System.out.println("Le fichier fréquence a été créé avec succès.");
+        } catch (IOException e) {
+            System.out.println("Une erreur s'est produite : " + e.getMessage());
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
     }
 }

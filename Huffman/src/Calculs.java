@@ -18,7 +18,7 @@ public class Calculs {
             double fileSize = file.length();
             double texteSize = texte.length(); 
 
-            return 1 - fileSize/texteSize; 
+            return (texteSize - fileSize)/texteSize; 
         
         } else {
             return 0; 
