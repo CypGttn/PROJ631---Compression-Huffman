@@ -51,7 +51,7 @@ public class ConstructionArbre {
                 //On ajoute le noeud dans la liste des branches
                 arbre.add(noeud);
                 //Après ajout d'un nouvel élément, on tri la liste en utilisant les valeurs
-                Collections.sort(arbre, new ArbreComparator()); 
+                Collections.sort(arbre); 
                 //On fait un appel récursive pour créer la suite des noeuds
                 Noeud(); 
 

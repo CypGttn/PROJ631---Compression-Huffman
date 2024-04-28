@@ -92,21 +92,7 @@ public class Frequence {
         // Trier la liste 
         Collections.sort(
             list,
-            new Comparator<Map.Entry<String, Integer> >() {
-                // Compare la valeur des entrées
-                public int compare(
-                    Entry<String, Integer> entry1,
-                    Entry<String, Integer> entry2)
-                    {
-                        int compareValue = entry1.getValue().compareTo(entry2.getValue());
-                        if (compareValue != 0) {
-                            return compareValue;
-                        } else {
-                            // Si les valeurs sont égales, alors on compare en utilisant le code ASCII
-                            return entry1.getKey().compareTo(entry2.getKey());
-                        }
-                    }
-                });
+            new ArbreComparator<String, Integer>());
         //On vide le dictionnaire
         dico.clear();
   

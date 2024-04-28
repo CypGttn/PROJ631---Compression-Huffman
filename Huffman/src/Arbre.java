@@ -1,7 +1,7 @@
 //Import des modules java
 import java.util.LinkedHashMap;
 
-public class Arbre {
+public class Arbre implements Comparable<Arbre> {
     //On définit les éléments nécessaires à la création de l'arbre
     public String caractere;
     public int valeur;
@@ -122,6 +122,12 @@ public class Arbre {
 
         //Retourne le dictionnaire associant le caractère à son code en binaire 
         return codageFreq;
+    }
+
+    @Override
+    public int compareTo(Arbre autreArbre) {
+        // Compare les valeurs de deux arbres
+        return Integer.compare(this.valeur, autreArbre.valeur);
     }
 
 }
