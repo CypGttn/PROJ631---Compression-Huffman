@@ -5,8 +5,27 @@ public class Calculs {
     private String nomFichier;
     private ArrayList<String> caractere;  
 
+    //Getters et Setters
+    
+
     public Calculs(String nomFichier) {
         this.nomFichier = nomFichier;
+    }
+
+    public String getNomFichier() {
+        return nomFichier;
+    }
+
+    public void setNomFichier(String nomFichier) {
+        this.nomFichier = nomFichier;
+    }
+
+    public ArrayList<String> getCaractere() {
+        return caractere;
+    }
+
+    public void setCaractere(ArrayList<String> caractere) {
+        this.caractere = caractere;
     }
 
     public Calculs(ArrayList<String> caractere) {

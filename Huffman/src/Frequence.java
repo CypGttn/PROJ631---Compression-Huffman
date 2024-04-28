@@ -1,16 +1,48 @@
 //Import des modules java
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
-import java.util.Map.*;
 
 public class Frequence {
     private String mot;
     private ArrayList<String> decompoMot; 
     private ArrayList<String> enleverDoublons; 
     private ArrayList<Integer> frequenceLettre; 
+
+    
+    //Getters et Setters
+    public String getMot() {
+        return mot;
+    }
+
+    public void setMot(String mot) {
+        this.mot = mot;
+    }
+
+    public ArrayList<String> getDecompoMot() {
+        return decompoMot;
+    }
+
+    public void setDecompoMot(ArrayList<String> decompoMot) {
+        this.decompoMot = decompoMot;
+    }
+
+    public ArrayList<String> getEnleverDoublons() {
+        return enleverDoublons;
+    }
+
+    public void setEnleverDoublons(ArrayList<String> enleverDoublons) {
+        this.enleverDoublons = enleverDoublons;
+    }
+
+    public ArrayList<Integer> getFrequenceLettre() {
+        return frequenceLettre;
+    }
+
+    public void setFrequenceLettre(ArrayList<Integer> frequenceLettre) {
+        this.frequenceLettre = frequenceLettre;
+    }
 
     public Frequence(String mot, ArrayList<String> decompoMot, ArrayList<String> enleverDoublons,
             ArrayList<Integer> frequenceLettre) {

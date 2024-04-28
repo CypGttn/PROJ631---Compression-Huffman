@@ -96,7 +96,7 @@ public class Arbre implements Comparable<Arbre> {
     }
     //Codage Huffman
 
-    //Initialise un dicitonnaire et faire le premier appel à la fonction codage
+    //Initialise un dictionnaire et fait le premier appel à la fonction codage
     public LinkedHashMap<String, String> codageHuffman() {
         LinkedHashMap<String, String> codageFreq = new LinkedHashMap<>();
         return codage(this, 0, "", codageFreq);
@@ -110,18 +110,21 @@ public class Arbre implements Comparable<Arbre> {
             return codageFreq;
         }
 
-        // Afficher l'arbre de manière récursive, enfant Gauche ajoute un 1
-        codage(arbre.enfantGauche, niveau + 1, code + "0", codageFreq);
+        
 
         
         if (arbre.caractere != null) {
             codageFreq.put(arbre.caractere, code);
         } 
-        // Afficher l'arbre de manière récursive, enfant drpit ajoute un 0
-        codage(arbre.enfantDroit, niveau + 1, code +"1", codageFreq);
-
-        //Retourne le dictionnaire associant le caractère à son code en binaire 
+        
+        // Afficher l'arbre de manière récursive, enfant Gauche ajoute un 0
+        codage(arbre.enfantGauche, niveau + 1, code + "0", codageFreq);
+        // Afficher l'arbre de manière récursive, enfant droit ajoute un 1
+        codage(arbre.enfantDroit, niveau + 1, code + "1", codageFreq);
+       
+        
         return codageFreq;
+        
     }
 
     @Override

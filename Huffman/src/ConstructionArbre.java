@@ -14,6 +14,40 @@ public class ConstructionArbre {
     public LinkedHashMap<String, Integer> dico;
     public ArrayList<Arbre> arbre;
 
+    
+    //Getters et setters
+    public ArrayList<String> getEnleverDoublons() {
+        return enleverDoublons;
+    }
+
+    public void setEnleverDoublons(ArrayList<String> enleverDoublons) {
+        this.enleverDoublons = enleverDoublons;
+    }
+
+    public ArrayList<Integer> getFrequenceLettre() {
+        return frequenceLettre;
+    }
+
+    public void setFrequenceLettre(ArrayList<Integer> frequenceLettre) {
+        this.frequenceLettre = frequenceLettre;
+    }
+
+    public LinkedHashMap<String, Integer> getDico() {
+        return dico;
+    }
+
+    public void setDico(LinkedHashMap<String, Integer> dico) {
+        this.dico = dico;
+    }
+
+    public ArrayList<Arbre> getArbre() {
+        return arbre;
+    }
+
+    public void setArbre(ArrayList<Arbre> arbre) {
+        this.arbre = arbre;
+    }
+
     //Constructeur 
     public ConstructionArbre(LinkedHashMap<String, Integer> dico) {
         this.dico = dico;
