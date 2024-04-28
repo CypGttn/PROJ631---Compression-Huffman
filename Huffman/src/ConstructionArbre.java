@@ -60,6 +60,7 @@ public class ConstructionArbre {
         }
     }
 
+    //Permet d'afficher l'arbre
     public void afficherArbre() {
         if (arbre.size() == 1) {
             arbre.get(0).afficher(); // Appel de la méthode afficher de la classe Arbre
@@ -68,6 +69,7 @@ public class ConstructionArbre {
         }
     }
 
+    //Permet d'afficher le code binaire
     public String AfficherCode() {
         LinkedHashMap<String, String> codage = new LinkedHashMap<String, String>();
         if (arbre.size() == 1) {
@@ -85,8 +87,10 @@ public class ConstructionArbre {
         return codageComplet; 
     }
 
+    //Créer le doc compresser binaire
     public void DocBin(String nom_fichier) {
         String codageString = AfficherCode(); 
+        //Prend le nom du fichier d'origine en ajoutant : _comp.bin
         String fileName = nom_fichier +"_comp.bin";
 
         try {

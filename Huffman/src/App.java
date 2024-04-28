@@ -1,13 +1,15 @@
 //Import des modules java
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
         //Chemin du fichier
-        String nomFichier = "alice"; 
+        String nomFichier = "textesimple"; 
         String filePath = nomFichier + ".txt";
-        //
+        //Lecture du fichier à partir d'un chemin donné
         String fic = LectureFichier.LireFichier(filePath);
         //Création de la liste avec tous les caractères du texte
         ArrayList<String> avecDoublons = Frequence.FrequenceCaractere(fic);
@@ -37,6 +39,13 @@ public class App {
         Calculs calc = new Calculs(nomFichier); 
         calc.Compression();
         System.out.println(calc.Compression());
+        //Compression moyenne pour plusieurs fichiers 
+    
+        // Initialize an ArrayList
+        ArrayList<String> textes = new ArrayList<>(Arrays.asList("textesimple", "extraitalice", "alice"));
+        Calculs plusieurs = new Calculs(textes);
+        System.out.println(plusieurs.TauxMoyen());
+
         
 
     }

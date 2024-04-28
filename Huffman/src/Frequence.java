@@ -20,6 +20,7 @@ public class Frequence {
         this.frequenceLettre = frequenceLettre;
     }
 
+    //On crée une liste contenant tous les caractères de la liste
     public static ArrayList<String> FrequenceCaractere(String mot){
         ArrayList<String> decompoMot = new ArrayList<String>();
         
@@ -29,10 +30,12 @@ public class Frequence {
         return decompoMot; 
     }
 
+    //Enlève les doublons de la liste des caractères
     public static ArrayList<String> Doublons(ArrayList<String> decompoMot) {
         ArrayList<String> enleverDoublons = new ArrayList<String>();
 
         for (int i =0; i< decompoMot.size(); i++ ) {
+            //Si le caractère n'est pas déjà dans la liste des caractères on l'ajoute 
             if (!enleverDoublons.contains(decompoMot.get(i))) {
                 enleverDoublons.add(decompoMot.get(i));
             }
@@ -40,17 +43,22 @@ public class Frequence {
         return enleverDoublons;
     }
 
+    //Compte la fréquence de chaque caractère 
     public static ArrayList<Integer> Count(ArrayList<String> decompoMot, ArrayList<String> enleverDoublons){
+        //On crée une liste vide qui va accueillir les valeurs de fréquences
         ArrayList<Integer> frequenceLettre = new ArrayList<Integer>();
+        //On parcourt la liste sans doublons de caractère
         for (int i = 0; i < enleverDoublons.size(); i++) {
             String element = enleverDoublons.get(i);
             int count = 0; 
+            //On parcourt la liste avec doublons, et on compte le nombre d'itérations du caractère
             for (int j = 0; j < decompoMot.size(); j++) {
                 String lettre = decompoMot.get(j);
                 if (lettre.equals(element)){
                     count++; 
                 }
             }
+            //La fréquence est ajoutée dans la liste
             frequenceLettre.add(count);
 
          
@@ -58,13 +66,17 @@ public class Frequence {
         return frequenceLettre;
     }
 
+    //Création du dictionnaire associant caractère à sa fréquence 
     public static LinkedHashMap<String, Integer> Dictionnaire(ArrayList<String> enleverDoublons, ArrayList<Integer> frequenceLettre){
         // Création d'un LinkedHashMap avec des chaînes de caractères comme clés et des entiers comme valeurs
         LinkedHashMap<String, Integer> dico = new LinkedHashMap<>();
 
         for (int i=0; i < enleverDoublons.size();i++){
+            //On prend le caractère dans la liste sans doublons
             String element = enleverDoublons.get(i);
+            //Et sa fréquence dans la liste des fréquence
             Integer valeur = frequenceLettre.get(i); 
+            //On les ajoute au dictionnaire 
             dico.put(element, valeur); 
         }
 
@@ -72,17 +84,16 @@ public class Frequence {
     }
 
     public static LinkedHashMap<String, Integer> TrierDico(LinkedHashMap<String, Integer> dico){
-        // using entryset() method
+        //Créer une liste qui prend la liste des entrées
         List<Map.Entry<String, Integer> > list
             = new ArrayList<Map.Entry<String, Integer> >(
                 dico.entrySet());
   
-        // Comparable Interface function to
-        // sort the values of List
+        // Trier la liste 
         Collections.sort(
             list,
             new Comparator<Map.Entry<String, Integer> >() {
-                // Comparing entries
+                // Compare la valeur des entrées
                 public int compare(
                     Entry<String, Integer> entry1,
                     Entry<String, Integer> entry2)
@@ -91,34 +102,34 @@ public class Frequence {
                         if (compareValue != 0) {
                             return compareValue;
                         } else {
-                            // If values are equal, compare by ASCII codes of keys
+                            // Si les valeurs sont égales, alors on compare en utilisant le code ASCII
                             return entry1.getKey().compareTo(entry2.getKey());
                         }
                     }
                 });
-        // Clear the above LinkedHashMap
-        // using clear() method
+        //On vide le dictionnaire
         dico.clear();
   
-        // Iterating over elements using for each loop
+        // On parcours les entrées
         for (Map.Entry<String, Integer> entry : list) {
   
-            // Put all sorted value back to the
-            // LinkedHashMap
+            // Puis on remet tous dans le dictionnaire
             dico.put(entry.getKey(), entry.getValue());
         }
         return dico;
   
     }
 
+    //Creer le fichier contenant toutes les fréquences 
     public static void FichierFreq(LinkedHashMap<String, Integer> dico, String nomFichier) {
         int somme = 0; 
 
-        // Iterating over elements using for each loop
+        // Parcours chaque élément de la liste pour trouver la valeur, et puis ajoute cette valeur à la somme
         for (Map.Entry<String, Integer> entry : dico.entrySet()) {
             somme = somme + entry.getValue();
         }
         System.out.println("Nombre total de caractère :" + somme );
+        //Créer le nouveau fichier en prenant en le nom du fichier texte + _freq.txt
         String fileName = nomFichier +"_freq.txt";
 
         try {
@@ -126,8 +137,9 @@ public class Frequence {
             FileOutputStream fos = new FileOutputStream(fileName);
             DataOutputStream dos = new DataOutputStream(fos);
 
-            // Écrire des données dans le fichier binaire
+            // On note la somme dans la première ligne du fichier
             dos.writeUTF(String.valueOf(somme));
+            //Puis on ajoute chaque caractère et sa fréquence 
             for (Map.Entry<String, Integer> entry : dico.entrySet()) {
                 dos.writeUTF("\n" + entry.getKey() + " " + String.valueOf(entry.getValue()));
             }

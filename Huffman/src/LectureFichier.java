@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class LectureFichier {
 
+    //Fonction qui permet de lire en fichier
     public static String LireFichier(String cheminFichier) {
         StringBuilder contenu = new StringBuilder();
         try {
