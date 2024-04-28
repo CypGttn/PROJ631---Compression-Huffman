@@ -20,4 +20,6 @@ Installation :
 À partir de ce répertoire, il faut que vous cloniez l'ensemble des fichiers sur votre ordinateur.
 Pour ce faire : git clone + le chemin d'accès fournit par github.
 
+Ce programme est destiné à être ouvert avec Visual Studio Code ou Ecclipse. Il suffit d'ouvrir le fichier "App" et de changer le nom du fichier que vous voulez encoder à la ligne 9.
+
 
