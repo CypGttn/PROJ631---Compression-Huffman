@@ -77,7 +77,7 @@ public class Arbre implements Comparable<Arbre> {
         }
 
         // Afficher l'arbre de manière récursive
-        afficherArbre(arbre.enfantGauche, niveau + 1);
+        afficherArbre(arbre.enfantDroit, niveau + 1);
 
         for (int i = 0; i < niveau; i++) {
             System.out.print("    "); // Indentation pour chaque niveau
@@ -92,37 +92,29 @@ public class Arbre implements Comparable<Arbre> {
             System.out.println("[" + arbre.valeur + "]");
         }
 
-        afficherArbre(arbre.enfantDroit, niveau + 1);
+        afficherArbre(arbre.enfantGauche, niveau + 1);
     }
     //Codage Huffman
 
     //Initialise un dictionnaire et fait le premier appel à la fonction codage
     public LinkedHashMap<String, String> codageHuffman() {
         LinkedHashMap<String, String> codageFreq = new LinkedHashMap<>();
-        return codage(this, 0, "", codageFreq);
+        return codage(this,  "", codageFreq);
         
     }
 
     //Codage de chaque caractère de manière récursive
-    private LinkedHashMap<String, String> codage(Arbre arbre, int niveau, String code, LinkedHashMap<String, String> codageFreq) {
-        
-        if (arbre == null) {
-            return codageFreq;
-        }
-
-        
-
+    private LinkedHashMap<String, String> codage(Arbre arbre,  String code, LinkedHashMap<String, String> codageFreq) {
         
         if (arbre.caractere != null) {
             codageFreq.put(arbre.caractere, code);
         } 
-        
+        else  {
         // Afficher l'arbre de manière récursive, enfant Gauche ajoute un 0
-        codage(arbre.enfantGauche, niveau + 1, code + "0", codageFreq);
+        codage(arbre.enfantGauche,  code + "0", codageFreq);
         // Afficher l'arbre de manière récursive, enfant droit ajoute un 1
-        codage(arbre.enfantDroit, niveau + 1, code + "1", codageFreq);
-       
-        
+        codage(arbre.enfantDroit, code + "1", codageFreq);
+        }
         return codageFreq;
         
     }

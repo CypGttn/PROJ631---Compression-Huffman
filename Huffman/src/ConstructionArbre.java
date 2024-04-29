@@ -78,7 +78,7 @@ public class ConstructionArbre {
 
                 int somme = feuille1.valeur + feuille2.valeur; 
                 //On initialise le noeud avec la somme, et les deux premières branches de la liste comme enfants 
-                Arbre noeud = new Arbre(somme, feuille1, feuille2); 
+                Arbre noeud = new Arbre(somme, feuille2, feuille1); 
                 //Une fois les branches utilisées dans un noeud, on les retire de la liste des branches
                 arbre.remove(feuille1);
                 arbre.remove(feuille2); 
@@ -104,7 +104,7 @@ public class ConstructionArbre {
     }
 
     //Permet d'afficher le code binaire
-    public String AfficherCode() {
+    public String AfficherCode(ArrayList<String> avecDoublons) {
         LinkedHashMap<String, String> codage = new LinkedHashMap<String, String>();
         if (arbre.size() == 1) {
             codage = arbre.get(0).codageHuffman();
@@ -114,33 +114,31 @@ public class ConstructionArbre {
 
 
         String codageComplet = ""; 
-        for (Map.Entry<String, String> entry : codage.entrySet()) {
-            codageComplet += entry.getValue(); 
+        for (String element : avecDoublons) {
+            codageComplet += codage.get(element); 
 
         }
         return codageComplet; 
     }
 
     //Créer le doc compresser binaire
-    public void DocBin(String nom_fichier) {
-        String codageString = AfficherCode(); 
+    public void DocBin(String nom_fichier, ArrayList<String> avecDoublons) {
+        String codageString = AfficherCode(avecDoublons); 
         //Prend le nom du fichier d'origine en ajoutant : _comp.bin
         String fileName = nom_fichier +"_comp.bin";
-
         try {
-            // Créer un flux de sortie vers le fichier binaire
-            FileOutputStream fos = new FileOutputStream(fileName);
-            // Créer un flux de données pour écrire des données binaires
-            DataOutputStream dos = new DataOutputStream(fos);
+            // Convertir le string en tableau de bytes
+            byte[] bytes = new byte[codageString.length() / 8];
+            for (int i = 0; i < bytes.length; i++) {
+                String byteString = codageString.substring(i * 8, (i + 1) * 8);
+                bytes[i] = (byte) Integer.parseInt(byteString, 2);
+            }
 
-            // Écrire des données dans le fichier binaire
-            dos.writeUTF(codageString);
-
-            // Fermer les flux
-            dos.close();
-            fos.close();
-
-            System.out.println("Le fichier binaire a été créé avec succès.");
+            // Écrire les données dans le fichier binaire
+            FileOutputStream outputStream = new FileOutputStream(fileName);
+            outputStream.write(bytes);
+            outputStream.close();
+        
         } catch (IOException e) {
             System.out.println("Une erreur s'est produite : " + e.getMessage());
             e.printStackTrace();

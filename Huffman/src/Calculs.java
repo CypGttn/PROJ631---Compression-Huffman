@@ -36,16 +36,19 @@ public class Calculs {
         // Créer un objet File en utilisant le chemin du fichier
         File file = new File(nomFichier + "_comp.bin");
         File texte = new File(nomFichier + ".txt");
+        File freq = new File(nomFichier + "_freq.txt");
 
         // Vérifier si le fichier existe
         if(file.exists()) {
             // Obtenir la taille du fichier en octets
             double fileSize = file.length();
-            System.out.println(fileSize);
+            
             double texteSize = texte.length(); 
             System.out.println(texteSize); 
+            double taillefreq = freq.length();
+            System.out.println(fileSize+taillefreq);
 
-            return 1-(fileSize/texteSize); 
+            return 1-((fileSize+taillefreq)/texteSize); 
         
         } else {
             return 0; 

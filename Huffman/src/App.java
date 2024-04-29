@@ -31,9 +31,9 @@ public class App {
         //On affiche l'arbre en donnant la valeur des noeuds et s'il y en a le caratère associé
         tree.afficherArbre(); 
         //On crée le code binaire à partir de l'arbre
-        tree.AfficherCode();
-        tree.DocBin(nomFichier);
-        System.out.println(tree.AfficherCode());
+        tree.AfficherCode(avecDoublons);
+        tree.DocBin(nomFichier, avecDoublons);
+        System.out.println(tree.AfficherCode(avecDoublons));
         // Calculs de compression 
         Calculs calc = new Calculs(nomFichier); 
         System.out.println(calc.Compression());
