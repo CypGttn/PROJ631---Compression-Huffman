@@ -53,7 +53,7 @@ public class Frequence {
     }
 
     //On crée une liste contenant tous les caractères de la liste
-    public ArrayList<String> FrequenceCaractere(String mot){
+    public static ArrayList<String> FrequenceCaractere(String mot){
         ArrayList<String> decompoMot = new ArrayList<String>();
         
         for (int i = 0; i < mot.length(); i++) {
@@ -63,7 +63,7 @@ public class Frequence {
     }
 
     //Enlève les doublons de la liste des caractères
-    public ArrayList<String> Doublons(ArrayList<String> decompoMot) {
+    public static ArrayList<String> Doublons(ArrayList<String> decompoMot) {
         ArrayList<String> enleverDoublons = new ArrayList<String>();
 
         for (int i =0; i< decompoMot.size(); i++ ) {
@@ -76,7 +76,7 @@ public class Frequence {
     }
 
     //Compte la fréquence de chaque caractère 
-    public ArrayList<Integer> Count(ArrayList<String> decompoMot, ArrayList<String> enleverDoublons){
+    public static ArrayList<Integer> Count(ArrayList<String> decompoMot, ArrayList<String> enleverDoublons){
         //On crée une liste vide qui va accueillir les valeurs de fréquences
         ArrayList<Integer> frequenceLettre = new ArrayList<Integer>();
         //On parcourt la liste sans doublons de caractère
@@ -99,7 +99,7 @@ public class Frequence {
     }
 
     //Création du dictionnaire associant caractère à sa fréquence 
-    public LinkedHashMap<String, Integer> Dictionnaire(ArrayList<String> enleverDoublons, ArrayList<Integer> frequenceLettre){
+    public static LinkedHashMap<String, Integer> Dictionnaire(ArrayList<String> enleverDoublons, ArrayList<Integer> frequenceLettre){
         // Création d'un LinkedHashMap avec des chaînes de caractères comme clés et des entiers comme valeurs
         LinkedHashMap<String, Integer> dico = new LinkedHashMap<>();
 
@@ -115,7 +115,7 @@ public class Frequence {
         return dico;
     }
 
-    public LinkedHashMap<String, Integer> TrierDico(LinkedHashMap<String, Integer> dico){
+    public static LinkedHashMap<String, Integer> TrierDico(LinkedHashMap<String, Integer> dico){
         //Créer une liste qui prend la liste des entrées
         List<Map.Entry<String, Integer> > list
             = new ArrayList<Map.Entry<String, Integer> >(
@@ -139,7 +139,7 @@ public class Frequence {
     }
 
     //Creer le fichier contenant toutes les fréquences 
-    public void FichierFreq(LinkedHashMap<String, Integer> dico, String nomFichier) {
+    public static void FichierFreq(LinkedHashMap<String, Integer> dico, String nomFichier) {
         int somme = 0; 
 
         // Parcours chaque élément de la liste pour trouver la valeur, et puis ajoute cette valeur à la somme
