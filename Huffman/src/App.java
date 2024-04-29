@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 public class App {
     public static void main(String[] args) {
         //Chemin du fichier
-        String nomFichier = "extraitalice"; 
+        String nomFichier = "alice"; 
         String filePath = nomFichier + ".txt";
         //Lecture du fichier à partir d'un chemin donné
         String fic = LectureFichier.LireFichier(filePath);
@@ -41,8 +41,8 @@ public class App {
     
         // Initialize an ArrayList
         //ArrayList<String> textes = new ArrayList<>(Arrays.asList("textesimple", "extraitalice", "alice"));
-        Calculs plusieurs = new Calculs(nomFichier, sansDoublons);
-        System.out.println(plusieurs.TauxMoyen());
+        //Calculs plusieurs = new Calculs(nomFichier, sansDoublons);
+        //System.out.println(plusieurs.TauxMoyen());
 
         
 

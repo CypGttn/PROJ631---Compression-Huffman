@@ -50,9 +50,9 @@ public class Calculs {
             double fileSize = file.length();
             
             double texteSize = texte.length(); 
-            System.out.println(texteSize); 
+            //System.out.println(texteSize); 
             double taillefreq = freq.length();
-            System.out.println(fileSize+taillefreq);
+            //System.out.println(fileSize+taillefreq);
 
             return 1-((fileSize+taillefreq)/texteSize); 
         
