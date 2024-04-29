@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 public class App {
     public static void main(String[] args) {
         //Chemin du fichier
-        String nomFichier = "textesimple"; 
+        String nomFichier = "extraitalice"; 
         String filePath = nomFichier + ".txt";
         //Lecture du fichier à partir d'un chemin donné
         String fic = LectureFichier.LireFichier(filePath);
