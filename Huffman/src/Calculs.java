@@ -32,6 +32,12 @@ public class Calculs {
         this.caractere = caractere;
     }
 
+    
+    public Calculs(String nomFichier, ArrayList<String> caractere) {
+        this.nomFichier = nomFichier;
+        this.caractere = caractere;
+    }
+
     public double Compression() {
         // Créer un objet File en utilisant le chemin du fichier
         File file = new File(nomFichier + "_comp.bin");
