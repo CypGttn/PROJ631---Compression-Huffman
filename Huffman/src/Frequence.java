@@ -144,7 +144,7 @@ public class Frequence {
 
         // Parcours chaque élément de la liste pour trouver la valeur, et puis ajoute cette valeur à la somme
         for (Map.Entry<String, Integer> entry : dico.entrySet()) {
-            somme = somme + entry.getValue();
+            somme = somme + 1;
         }
         System.out.println("Nombre total de caractère :" + somme );
         //Créer le nouveau fichier en prenant en le nom du fichier texte + _freq.txt
